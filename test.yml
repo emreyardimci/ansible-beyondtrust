@@ -2,7 +2,7 @@
 #####
 # Stage 1 - Uninstall & Clear
 
-- hosts: all
+- hosts: localhost
   collections:
     - beyondtrust.secrets_safe
   gather_facts: no
