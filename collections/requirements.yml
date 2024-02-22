@@ -3,4 +3,4 @@ collections:
 # Install a collection from Ansible Galaxy.
 - name: beyondtrust.secrets_safe
   version: "1.0.0"
-  source: https://ansible-galaxy-ng.s3.dualstack.us-east-1.amazonaws.com/artifact/02/5d7290b8147c1b71e021c5b270f6feafeec992a68a42b3fda83781eed47460?response-content-disposition=attachment%3Bfilename%3Dbeyondtrust-secrets_safe-1.0.0.tar.gz&response-content-type=application%2Fgzip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA5DPYWLYOGHQ73CV2%2F20240222%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240222T111543Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f1308d33e2256c5890f7ce258b27f1f2a1cd6652c20252e554f2f581cae3d59b
+  source: https://galaxy.ansible.com
