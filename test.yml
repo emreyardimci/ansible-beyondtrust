@@ -12,7 +12,7 @@
    #- meta: end_play
 
    - name: BeyondTrust Collection Test
-     shell: echo $PASSWORD_SAFE_API_URL
+     shell: echo {{PASSWORD_SAFE_API_URL}}
      register: shell_result
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
