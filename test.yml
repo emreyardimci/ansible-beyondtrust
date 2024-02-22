@@ -5,9 +5,6 @@
 - hosts: all
   collections:
     - beyondtrust.secrets_safe
-    - name: beyondtrust.secrets_safe
-      version: "1.0.0"
-      source: https://galaxy.ansible.com
   gather_facts: no
   vars:
     apiURL: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_API_URL') }}"
