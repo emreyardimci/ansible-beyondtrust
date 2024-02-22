@@ -1,0 +1,34 @@
+{
+ "collection_info": {
+  "namespace": "beyondtrust",
+  "name": "secrets_safe",
+  "version": "1.0.0",
+  "authors": [
+   "BeyondTrust Corporation <support@beyondtrust.com>"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "beyondtrust",
+   "secretssafe",
+   "secrets",
+   "security",
+   "devops"
+  ],
+  "description": "This collection provides Ansible modules and plugins for interacting with the BeyondTrust Secrets Safe. Allowing you to Secure and manage credentials and secrets used in your Ansible environment.",
+  "license": [],
+  "license_file": "LICENSE",
+  "dependencies": {},
+  "repository": "https://github.com/BeyondTrust/ps-integration-ansible",
+  "documentation": "https://www.beyondtrust.com/docs/beyondinsight-password-safe/",
+  "homepage": null,
+  "issues": null
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "c94719148b668646c03f0323832212f40d02725e68f2547f1f78389c09461613",
+  "format": 1
+ },
+ "format": 1
+}
