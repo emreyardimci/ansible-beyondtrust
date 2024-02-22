@@ -4,15 +4,28 @@
 
 - hosts: all
   collections:
-    - cyberark.pas
+    - beyondtrust.secrets_safe
   gather_facts: no
   vars:
+    apiURL: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_API_URL') }}"
+
+    clientIdFromEnvVar: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_ID') }}"
+    secretFromEnvVar: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_SECRET') }}"
+
+    #certificatePasswordFromEnVar:  "{{ lookup('ansible.builtin.env', 'CERTIFICATE_PASSWORD') }}"
+    #certificatePath: "<path>/ClientCertificate.pfx"
+
+    secretManagedAccounts: "172.31.73.226/wcp_user1"
+    gotManagedAccount: "{{lookup('beyondTrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}"
+
+    #secretList: "fake_grp/credential,fake_grp/file"
+    #gotSecrets: "{{lookup('beyondTrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='SECRET', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretList, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False, verify_ca=True)}}"
   tasks:
 
    #- meta: end_play
 
    - name: BeyondTrust Collection Test
-     shell: echo {{PASSWORD_SAFE_API_URL}}
+     shell: echo {{gotManagedAccount}}
      register: shell_result
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
