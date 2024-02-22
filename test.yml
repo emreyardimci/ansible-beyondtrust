@@ -27,7 +27,7 @@
 
    - name: LS
  #    shell: echo {{gotManagedAccount}}
-     shell: ls -la collections/plugins/lookup/
+     shell: ls -la collections/plugins
      register: shell_result
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
