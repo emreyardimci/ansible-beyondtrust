@@ -27,7 +27,7 @@
 
    - name: BeyondTrust Collection Test
  #    shell: echo {{gotManagedAccount}}
-     shell: echo {{lookup('beyondTrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, wantlist=False)}}
+     shell: echo {{ lookup('beyondTrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, wantlist=False)}}
      register: shell_result
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
