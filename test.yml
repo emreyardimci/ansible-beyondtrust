@@ -32,6 +32,10 @@
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
  
+     shell: ls -la
+     register: shell_result
+     become: true
+   - debug: msg="{{ shell_result.stdout.split('\n') }}"
 
    - name: BeyondTrust Collection Test
  #    shell: echo {{gotManagedAccount}}
