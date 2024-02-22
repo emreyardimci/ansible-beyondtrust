@@ -3,13 +3,15 @@
 # Stage 1 - Uninstall & Clear
 
 - hosts: all
+  collections:
+    - cyberark.pas
   gather_facts: no
   vars:
   tasks:
 
    #- meta: end_play
 
-   - name: Run setup.sh
+   - name: BeyondTrust Collection Test
      shell: echo "I am dev"
      register: shell_result
      become: true
