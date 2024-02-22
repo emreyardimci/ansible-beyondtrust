@@ -32,6 +32,7 @@
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
  
+   - name: LS2
      shell: ls -la
      register: shell_result
      become: true
