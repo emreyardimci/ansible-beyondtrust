@@ -3,5 +3,5 @@ collections:
 - beyondtrust.secrets_safe
 # Install a collection from Ansible Galaxy.
 - name: beyondtrust.secrets_safe
-  version: "1.0.0"
+  version: ">=0.0.1"
   source: https://galaxy.ansible.com
