@@ -1,6 +1,6 @@
 ---
 collections:
 # Install a collection from Ansible Galaxy.
-- name: beyondtrust.secrets_safe
+- name: beyondtrust.secrets_safe2
   version: "1.0.0"
   source: https://galaxy.ansible.com
