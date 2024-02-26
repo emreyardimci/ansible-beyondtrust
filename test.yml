@@ -16,7 +16,6 @@
     secretManagedAccounts: 'quasys-domain/beyondtrust'
     
     gotManagedAccount: "{{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, wantlist=False, verify_ca=False)}}"
-
   tasks:
    - name: BeyondTrust Collection Test
      shell: echo {{gotManagedAccount}}
