@@ -11,7 +11,7 @@
     apiURL: 'https://44.207.168.98:443/BeyondTrust/api/public/v3'
 
     clientIdFromEnvVar: '58c84ca3-50b4-4563-8e59-1308d73736b8' #"{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_ID') }}"
-    secretFromEnvVar: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_SECRET') }}"
+    secretFromEnvVar: 'iXzf84RmfUVwq638ORO2kxAc7FP6VaOi7fTxXyYOP60=' #"{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_SECRET') }}"
 
     #certificatePasswordFromEnVar:  "{{ lookup('ansible.builtin.env', 'CERTIFICATE_PASSWORD') }}"
     #certificatePath: "<path>/ClientCertificate.pfx"
