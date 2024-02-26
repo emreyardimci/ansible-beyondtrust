@@ -7,7 +7,8 @@
     - beyondtrust.secrets_safe
   gather_facts: no
   vars:
-    apiURL: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_API_URL') }}"
+    #apiURL: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_API_URL') }}"
+    apiURL: 'https://44.207.168.98:443/BeyondTrust/api/public/v3'
 
     clientIdFromEnvVar: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_ID') }}"
     secretFromEnvVar: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_SECRET') }}"
@@ -16,7 +17,7 @@
     #certificatePath: "<path>/ClientCertificate.pfx"
 
     secretManagedAccounts: "172.31.73.226/wcp_user1"
-    #gotManagedAccount: "{{lookup('beyondTrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}"
+    gotManagedAccount: "{{lookup('beyondTrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}"
     #gotManagedAccount: "{{lookup('beyondTrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, wantlist=False)}}"
 
     #secretList: "fake_grp/credential,fake_grp/file"
@@ -39,9 +40,9 @@
    - debug: msg="{{ shell_result.stdout.split('\n') }}"
 
    - name: BeyondTrust Collection Test
- #    shell: echo {{gotManagedAccount}}
+     shell: echo {{gotManagedAccount}}
  #    shell: echo {{ lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url={{PASSWORD_SAFE_API_URL}}, retrieval_type='MANAGED_ACCOUNT', client_id={{PASSWORD_SAFE_CLIENT_ID}}, client_secret={{PASSWORD_SAFE_CLIENT_SECRET}}, secret_list=beyondtrust/beyondtrust, wantlist=False, verify_ca=False)}}
-     shell: echo {{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', 'api_url=https://44.207.168.98:443/BeyondTrust/api/public/v3', retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}
+ #    shell: echo {{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', 'api_url=https://44.207.168.98:443/BeyondTrust/api/public/v3', retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}
      register: shell_result
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
