@@ -1,43 +1,25 @@
 ---
 #####
-# Stage 1 - Uninstall & Clear
+# Stage 1 - BeyondTrust & Ansible Integration
+#https://www.beyondtrust.com/docs/beyondinsight-password-safe/ps/integrations/ansible/index.htm
+#https://github.com/emreyardimci/ansible-beyondtrust
+#https://galaxy.ansible.com/ui/repo/published/beyondtrust/secrets_safe/
 
 - hosts: localhost
   collections:
     - beyondtrust.secrets_safe
   gather_facts: no
   vars:
-    #apiURL: "{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_API_URL') }}"
     apiURL: 'https://44.207.168.98:443/BeyondTrust/api/public/v3'
-
-    clientIdFromEnvVar: '58c84ca3-50b4-4563-8e59-1308d73736b8' #"{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_ID') }}"
-    secretFromEnvVar: '+cU/Ia++5oCdeOKDflyTWILNqHHn6NKfDgKb+FTAlbM=' #"{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_SECRET') }}"
-
-    #certificatePasswordFromEnVar:  "{{ lookup('ansible.builtin.env', 'CERTIFICATE_PASSWORD') }}"
-    #certificatePath: "<path>/ClientCertificate.pfx"
-
+    clientIdFromEnvVar: '58c84ca3XXXXXXXXX-1308d73736b8' #"{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_ID') }}"
+    secretFromEnvVar: '+cU/Ia++5oXXXXXXXXXXXXXXX+FTAlbM=' #"{{ lookup('ansible.builtin.env', 'PASSWORD_SAFE_CLIENT_SECRET') }}"
     secretManagedAccounts: 'quasys-domain/beyondtrust'
-    #gotManagedAccount: "{{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}"
+    
     gotManagedAccount: "{{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, wantlist=False, verify_ca=False)}}"
 
-    #secretList: "fake_grp/credential,fake_grp/file"
-    #gotSecrets: "{{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='SECRET', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretList, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False, verify_ca=True)}}"
   tasks:
-
-   #- meta: end_play
-
-   - name: LS
- #    shell: echo {{gotManagedAccount}}
-     shell: chmod 777 -R collections/
-     register: shell_result
-     become: true
-   - debug: msg="{{ shell_result.stdout.split('\n') }}"  
- 
-
    - name: BeyondTrust Collection Test
      shell: echo {{gotManagedAccount}}
- #    shell: echo {{ lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url={{PASSWORD_SAFE_API_URL}}, retrieval_type='MANAGED_ACCOUNT', client_id={{PASSWORD_SAFE_CLIENT_ID}}, client_secret={{PASSWORD_SAFE_CLIENT_SECRET}}, secret_list=beyondtrust/beyondtrust, wantlist=False, verify_ca=False)}}
- #    shell: echo {{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', 'api_url=https://44.207.168.98:443/BeyondTrust/api/public/v3', retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}
      register: shell_result
      become: true
    - debug: msg="{{ shell_result.stdout.split('\n') }}"  
