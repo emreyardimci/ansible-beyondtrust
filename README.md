@@ -1,4 +1,4 @@
-Commands:
+Steps:
 Create API Registration as Access Policy
 Create User
 Assign API Registration to User
