@@ -16,7 +16,7 @@
     #certificatePasswordFromEnVar:  "{{ lookup('ansible.builtin.env', 'CERTIFICATE_PASSWORD') }}"
     #certificatePath: "<path>/ClientCertificate.pfx"
 
-    secretManagedAccounts: 'beyondtrust/beyondtrust'
+    secretManagedAccounts: 'quasys-domain/beyondtrust'
     #gotManagedAccount: "{{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, certificate_path=certificatePath, certificate_password=certificatePasswordFromEnVar, wantlist=False)}}"
     gotManagedAccount: "{{lookup('beyondtrust.secrets_safe.secrets_safe_lookup', api_url=apiURL, retrieval_type='MANAGED_ACCOUNT', client_id=clientIdFromEnvVar, client_secret=secretFromEnvVar, secret_list=secretManagedAccounts, wantlist=False, verify_ca=False)}}"
 
